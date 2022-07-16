@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/base.css" rel="stylesheet"></link>
+    <script src="js/observableslim.min.js"></script>
+    <script src="js/binds.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/web3utils.js"></script>
+    <script src="js/connect.js"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <span data-bind="db.state.network.account" data-itemtemplate="(account) => { 
+          var msg = 'Connected [' + account.slice(0,6) + '..' + account.slice(account.length-4) + ']';
+          return document.createTextNode(msg);
+        }">
+     loading...
+    </span>
+    <ul data-bind="db.state.wallets.related" data-itemtemplate="(item) => {
+          var li = document.createElement('li');
+          li.appendChild(document.createTextNode(item));
+          return li;
+        }">
+      <li>loading...</li>
+    </ul>
+  </body>
+</html>
