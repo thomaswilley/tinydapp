@@ -12,13 +12,12 @@ const tryConnecting = async(accountChanged, networkChanged, getState) => {
   if(window.web3) {
     setWeb3(window.web3)
     await web3.eth.getAccounts(function (error, accounts) {
-      let user;
+      let user = getState().network.account;
       if(accounts.length !== 0 && !error) account = accounts[0]
 
       watchAccountChanges(account => {
         getState().network.account = account;
         accountChanged();
-        delete(account)
       }, user);
       watchNetwork({
         networkId: id => {
